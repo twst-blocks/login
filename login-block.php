@@ -40,8 +40,40 @@ function init() {
 add_action( 'init', __NAMESPACE__ . '\init' );
 
 function render( $attributes, $rendered_html, $block ) {
+
+	$output = '<div class="twst-login login-block">';
+
 	if ( is_user_logged_in() ) {
-		return '';
+
+		$what_to_do = 'hide';
+		if ( ! empty( $attributes['loggedInBehaviour'] ) ) {
+			$what_to_do = $attributes['loggedInBehaviour'];
+		}
+
+		switch ( $what_to_do ) {
+			case 'user':
+				$output .= sprintf( __( 'Logged in as %s.', 'twst-login-block' ), wp_get_current_user()->display_name );
+
+				$output .= ' ';
+				// Add logout link.
+			case 'logout':
+				$redirect_to = false;
+				if ( ! empty( $block->context['postId'] ) ) {
+					$redirect_to = get_permalink( $block->context['postId'] );
+				}
+
+				$output .= wp_loginout( $redirect_to, false );
+				$output .= '</div>';
+				return $output;
+
+			case 'hide':
+			default:
+				return '';
+
+			case 'login':
+				$attributes['defaultUsername'] = wp_get_current_user()->user_login;
+				// Intentionally fall through.
+		}
 	}
 
 	$attribute_to_form_arg = [
@@ -49,12 +81,10 @@ function render( $attributes, $rendered_html, $block ) {
 		'defaultUsername'   => 'value_username',
 		'labelPassword'     => 'label_password',
 		'labelRememberMe'   => 'label_remember',
-		'hideRememberMe'    => 'remember',
+		'showRememberMe'    => 'remember',
 		'defaultRememberMe' => 'value_remember',
 		'labelLogIn'        => 'label_log_in',
 	];
-
-	$output = '<div class="twst-login login-block">';
 
 	$args = [
 		'form_id' => SLUG,

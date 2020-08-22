@@ -30,9 +30,17 @@ registerBlockType( 'twst/login', {
 			type: 'boolean',
 			default: false,
 		},
+		showRememberMe: {
+			type: 'boolean',
+			default: true,
+		},
 		labelLogIn: {
 			type: 'string',
 		},
+		loggedInBehaviour: {
+			type: 'string',
+			default: 'hide',
+		}
 	},
 
 	edit: Edit,
