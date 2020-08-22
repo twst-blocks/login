@@ -11,6 +11,7 @@ registerBlockType( 'twst/login', {
 	supports: {
 		html: false,
 	},
+	example: {},
 
 	attributes: {
 		labelUsername: {
@@ -34,6 +35,5 @@ registerBlockType( 'twst/login', {
 		},
 	},
 
-	example: {},
 	edit: Edit,
 } );

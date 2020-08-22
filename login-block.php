@@ -33,7 +33,7 @@ function init() {
 	register_block_type( 'twst/login', array(
 		'editor_script'   => SLUG . '-editor',
 		'editor_style'    => SLUG . '-editor',
-		'uses_context' => [ 'postId' ],
+		'uses_context'    => [ 'postId' ],
 		'render_callback' => __NAMESPACE__ . '\render',
 	) );
 }
@@ -71,7 +71,13 @@ function render( $attributes, $rendered_html, $block ) {
 		}
 	}
 
+	/* Not all themes have proper form styling, do the minimal work to make labels work */
+	$output .= '<style>.twst-login form label { display: block; }</style>';
+
 	$output .= wp_login_form( $args );
+
+	/* Most themes don't style submit buttons, style is like the Gutenberg Button Block */
+	$output = preg_replace( '/(<input type="submit" [^>]+ class=")/', '$1 wp-block-button__link ', $output );
 
 	$output .= '</div>';
 
