@@ -7,7 +7,7 @@ import {
 
 import './editor.scss';
 
-export default function Edit( props, loginBlockAttributes ) {
+export default function Edit( props ) {
 
 	const {
 		attributes,
@@ -15,12 +15,16 @@ export default function Edit( props, loginBlockAttributes ) {
 		setAttributes,
 	} = props;
 
+	/**
+	 * Note to self: These are <label> as only select elements trigger :hover for CSS.
+	 */
+
 	return (
 		<form className={ className } onSubmit={ (event) => event.preventDefault() }>
 			<p className="login-username">
 				<RichText
 					tagName="label"
-					placeholder={ loginBlockAttributes.labelUsername.default }
+					placeholder={ __( 'Username or Email Address', 'twst-login-block' ) }
 					keepPlaceholderOnFocus="true"
 					formattingControls={ [ 'bold', 'italic' ] }
 					onChange={ ( content ) => setAttributes( { labelUsername: content } ) }
@@ -38,7 +42,7 @@ export default function Edit( props, loginBlockAttributes ) {
 			<p className="login-password">
 				<RichText
 					tagName="label"
-					placeholder={ loginBlockAttributes.labelPassword.default }
+					placeholder={ __( 'Password', 'twst-login-block' ) }
 					keepPlaceholderOnFocus="true"
 					formattingControls={ [ 'bold', 'italic' ] }
                     onChange={ ( content ) => setAttributes( { labelPassword: content } ) }
@@ -47,16 +51,14 @@ export default function Edit( props, loginBlockAttributes ) {
 				<input type="password" className="input" size="20" readOnly />
 			</p>
 			<p className="login-remember">
-				<label>
-					<input
-						type="checkbox"
-						onChange={ ( event ) => setAttributes( { defaultRememberMe: event.target.value === "on" } ) }
-						checked={ attributes.defaultRememberMe }
-					/>
-				</label>
+				<input
+					type="checkbox"
+					onChange={ ( event ) => setAttributes( { defaultRememberMe: event.target.value === "on" } ) }
+					checked={ attributes.defaultRememberMe }
+				/>
 				<RichText
-					tagName="span"
-					placeholder={ loginBlockAttributes.labelRememberMe.default }
+					tagName="label"
+					placeholder={ __( 'Remember Me', 'twst-login-block' ) }
 					keepPlaceholderOnFocus="true"
 					formattingControls={ [ 'bold', 'italic' ] }
                     onChange={ ( content ) => setAttributes( { labelRememberMe: content } ) }
@@ -65,9 +67,9 @@ export default function Edit( props, loginBlockAttributes ) {
 			</p>
 			<p className="login-submit">
 				<RichText
-					tagName="div"
+					tagName="label"
 					className="wp-block-button__link"
-					placeholder={ loginBlockAttributes.labelLogIn.default }
+					placeholder={ __( 'Log In', 'twst-login-block' ) }
 					keepPlaceholderOnFocus="true"
 					formattingControls={ [] }
 					onChange={ ( content ) => setAttributes( { labelLogIn: content } ) }

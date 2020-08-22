@@ -2,28 +2,29 @@
 
 	p {
 		margin: 0;
-	}
 
-	.login-username,
-	.login-password {
-		label {
-			display: block;
+		&.login-username,
+		&.login-password {
+			label {
+				display: block;
+			}
 
-			/* Placeholders, when not focused should be visible */
-			&:not(:focus) > span:after {
-				opacity: 1;
+			input {
+				padding: 0.5rem 0.5rem;
+				width: 80%;
 			}
 		}
 
-		input[type="text"],
-		input[type="password"] {
-			padding: 0.5rem 0.5rem;
-			width: 80%;
+		/* Placeholders, when not focused should be visible */
+		label:not(:focus) > span:after {
+			opacity: 1;
 		}
+
+		/* We're stealing the block styling, but we don't want uppercase forced on */
+		label.wp-block-button__link {
+			text-transform: inherit;
+		}
+
 	}
 
-	/* We're stealing the block styling, but we don't want uppercase forced on */
-	div.wp-block-button__link {
-		text-transform: inherit;
-	}
 }
