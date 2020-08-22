@@ -3,7 +3,7 @@
 	"title": "Login",
 	"category": "widgets",
 	"icon": "lock",
-	"description": "Easily insert a login form block into a post or page.",
+	"description": "Easily insert a login form block into your post or page!",
 	"textdomain": "twst-login-block",
 	"supports": {
 		"html": false

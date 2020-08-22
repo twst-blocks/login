@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     TWST Login Block
- * Description:     Easily insert a login block into your post or page!
+ * Description:     Easily insert a login form block into your post or page!
  * Version:         1.0
  * Author:          TWST
  * License:         GPL-3.0-or-later
@@ -58,7 +58,7 @@ function render( $attributes, $rendered_html, $block ) {
 
 	$args = [
 		'form_id' => SLUG,
-		'echo' => false,
+		'echo'    => false,
 	];
 
 	if ( ! empty( $block->context['postId'] ) ) {
