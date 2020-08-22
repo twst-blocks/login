@@ -1,0 +1,14 @@
+{
+	"name": "twst/login-block",
+	"title": "Login Form",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Easily insert a login form block into a post or page.",
+	"textdomain": "twst-login",
+	"supports": {
+		"html": false
+	},
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
