@@ -9,26 +9,21 @@ registerBlockType( 'twst/login', {
 	category: 'widgets',
 	icon: 'lock',
 	supports: {
-		// Removes support for an HTML mode.
 		html: false,
 	},
 
 	attributes: {
 		labelUsername: {
 			type: 'string',
-			default: '',
 		},
 		defaultUsername: {
 			type: 'string',
-			default: '',
 		},
 		labelPassword: {
 			type: 'string',
-			default: '',
 		},
 		labelRememberMe: {
 			type: 'string',
-			default: '',
 		},
 		defaultRememberMe: {
 			type: 'boolean',
@@ -36,7 +31,6 @@ registerBlockType( 'twst/login', {
 		},
 		labelLogIn: {
 			type: 'string',
-			default: '',
 		},
 	},
 

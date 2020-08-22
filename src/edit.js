@@ -1,26 +1,14 @@
 import { __ } from '@wordpress/i18n';
-import {
-    RichText,
-    AlignmentToolbar,
-    BlockControls,
-} from '@wordpress/block-editor';
+import { RichText } from '@wordpress/block-editor';
 
 import './editor.scss';
 
-export default function Edit( props ) {
-
-	const {
-		attributes,
-		className,
-		setAttributes,
-	} = props;
-
+export default function Edit( { attributes, className, setAttributes } ) {
 	/**
 	 * Note to self: These are <label> as only select elements trigger :hover for CSS.
 	 */
-
 	return (
-		<form className={ className } onSubmit={ (event) => event.preventDefault() }>
+		<form className={ className }>
 			<p className="login-username">
 				<RichText
 					tagName="label"
@@ -73,8 +61,6 @@ export default function Edit( props ) {
 					keepPlaceholderOnFocus="true"
 					formattingControls={ [] }
 					onChange={ ( content ) => setAttributes( { labelLogIn: content } ) }
-					onClick={ ( event ) => event.preventDefault() }
-					onKeyPress={ ( event ) => event.preventDefault() }
                     value={ attributes.labelLogIn }
                 />
 			</p>

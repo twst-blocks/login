@@ -1,27 +1,19 @@
 <?php
+/**
+ * Plugin Name:     TWST Login Block
+ * Description:     Easily insert a login block into your post or page!
+ * Version:         1.0
+ * Author:          TWST
+ * License:         GPL-3.0-or-later
+ * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:     twst-login-block
+ */
+
 namespace TWST\WordPressBlock\Login;
 const SLUG  = 'twst-login-block';
 const BLOCK = 'twst/login';
 const DIR   = __DIR__ . '/';
 
-/**
- * Plugin Name:     TWST Login Block
- * Description:     Easily insert a login block into your post or page!
- * Version:         0.1.0
- * Author:          TWST
- * License:         GPL-3.0-or-later
- * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:     twst-login-block
- *
- * @package         twst
- */
-
-/**
- * Registers all block assets so that they can be enqueued through the block editor
- * in the corresponding context.
- *
- * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/applying-styles-with-stylesheets/
- */
 function init() {
 	$script_asset = require( DIR . 'build/index.asset.php' );
 	wp_register_script(
@@ -47,9 +39,6 @@ function init() {
 }
 add_action( 'init', __NAMESPACE__ . '\init' );
 
-/**
- * Render the login form.
- */
 function render( $attributes, $rendered_html, $block ) {
 	ob_start();
 
