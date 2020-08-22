@@ -1,10 +1,10 @@
 {
-	"name": "twst/login-block",
-	"title": "Login Form",
+	"name": "twst/login",
+	"title": "Login",
 	"category": "widgets",
-	"icon": "smiley",
+	"icon": "lock",
 	"description": "Easily insert a login form block into a post or page.",
-	"textdomain": "twst-login",
+	"textdomain": "twst-login-block",
 	"supports": {
 		"html": false
 	},

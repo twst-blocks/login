@@ -1,5 +1,8 @@
 <?php
 namespace TWST\WordPressBlock\Login;
+const SLUG  = 'twst-login-block';
+const BLOCK = 'twst/login';
+const DIR   = __DIR__ . '/';
 
 /**
  * Plugin Name:     TWST Login Block
@@ -20,40 +23,76 @@ namespace TWST\WordPressBlock\Login;
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/applying-styles-with-stylesheets/
  */
 function init() {
-	$dir = __DIR__;
-
-	$script_asset_path = "$dir/build/index.asset.php";
-
-	$index_js     = 'build/index.js';
-	$script_asset = require( $script_asset_path );
+	$script_asset = require( DIR . 'build/index.asset.php' );
 	wp_register_script(
-		'twst-login-block-editor',
-		plugins_url( $index_js, __FILE__ ),
+		SLUG . '-editor',
+		plugins_url( 'build/index.js', __FILE__ ),
 		$script_asset['dependencies'],
 		$script_asset['version']
 	);
 
-	$editor_css = 'build/index.css';
 	wp_register_style(
-		'twst-login-block-editor',
-		plugins_url( $editor_css, __FILE__ ),
-		array(),
-		filemtime( "$dir/$editor_css" )
+		SLUG . '-editor',
+		plugins_url( 'build/index.css', __FILE__ ),
+		[],
+		filemtime( DIR . 'build/index.css' )
 	);
 
-	$style_css = 'build/style-index.css';
-	wp_register_style(
-		'twst-login-block',
-		plugins_url( $style_css, __FILE__ ),
-		array(),
-		filemtime( "$dir/$style_css" )
-	);
-
-	register_block_type( 'twst/block', array(
-		'editor_script' => 'twst-login-block-editor',
-		'editor_style'  => 'twst-login-block-editor',
-		'style'         => 'twst-block-block',
+	register_block_type( 'twst/login', array(
+		'editor_script'   => SLUG . '-editor',
+		'editor_style'    => SLUG . '-editor',
+		'uses_context' => [ 'postId' ],
+		'render_callback' => __NAMESPACE__ . '\render',
 	) );
 }
 add_action( 'init', __NAMESPACE__ . '\init' );
 
+/**
+ * Render the login form.
+ */
+function render( $attributes, $rendered_html, $block ) {
+	ob_start();
+
+	$attribute_to_form_arg = [
+		'labelUsername'     => 'label_username',
+		'defaultUsername'   => 'value_username',
+		'labelPassword'     => 'label_password',
+		'labelRememberMe'   => 'label_remember',
+		'hideRememberMe'    => 'remember',
+		'defaultRememberMe' => 'value_remember',
+		'labelLogIn'        => 'label_log_in',
+	];
+
+	var_dump( $attributes );
+
+	$output = '<div class="twst-login login-block">';
+	if ( ! is_user_logged_in() ) {
+
+		$args = [
+			'form_id' => SLUG,
+			'echo' => false,
+		];
+
+		if ( ! empty( $block->context['postId'] ) ) {
+			$args['redirect'] = get_permalink( $block->context['postId'] );
+		}
+
+		foreach ( $attribute_to_form_arg as $attribute => $arg ) {
+			if ( isset( $attributes[ $attribute ] ) && '' !== $attributes[ $attribute ] ) {
+				$args[ $arg ] = $attributes[ $attribute ];
+			}
+		}
+	
+		var_dump( $args );
+
+		$output .= wp_login_form( $args );
+	} else {
+		$output .= sprintf(
+			__( 'You are logged in as %s.', 'twst-login-block' ),
+			wp_get_current_user()->display_name
+		);
+	}
+	$output .= '</div>';
+
+	return $output . ob_get_clean();
+}

@@ -1,9 +1,29 @@
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
+.editor-styles-wrapper .wp-block-twst-login {
 
-.wp-block-twst-block {
-	border: 1px dotted #f00;
+	p {
+		margin: 0;
+	}
+
+	.login-username,
+	.login-password {
+		label {
+			display: block;
+
+			/* Placeholders, when not focused should be visible */
+			&:not(:focus) > span:after {
+				opacity: 1;
+			}
+		}
+
+		input[type="text"],
+		input[type="password"] {
+			padding: 0.5rem 0.5rem;
+			width: 80%;
+		}
+	}
+
+	/* We're stealing the block styling, but we don't want uppercase forced on */
+	div.wp-block-button__link {
+		text-transform: inherit;
+	}
 }
