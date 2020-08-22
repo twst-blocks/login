@@ -2,7 +2,7 @@
 * Contributors:      twst
 * Tags:              block, login
 * Requires at least: 5.5
-* Tested up to:      5.5.1
+* Tested up to:      5.5
 * Stable tag:        0.1.0
 * Requires PHP:      5.6.0
 * License:           GPL-3.0-or-later
@@ -16,9 +16,10 @@ Insert a login form into your post or page!
 
 ## Frequently Asked Questions
 
-# Does this plugin work with plugin XYZ?
+# Does this plugin work with plugin X by ACME Inc?
 This plugin works with any plugin that supports WordPress logins.
-Please ask the author of XYZ if they support this block - Or give it a try!
+
+Please ask the author (ACME) if they support this block - Or just give it a try!
 
 ## Screenshots
 
