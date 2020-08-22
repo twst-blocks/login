@@ -39,7 +39,7 @@ export default function Edit( { attributes, className, setAttributes } ) {
 			<InspectorControls>
 				<PanelBody title={ __( 'Login Form Settings', 'twst-login-block' ) }>
 					<ToggleControl
-						label={ __( 'Show the Remember Me checkbox', 'twst-login-block' ) }
+						label={ __( 'Show Remember Me', 'twst-login-block' ) }
 						onChange={ set( 'showRememberMe' ) }
 						checked={ attributes.showRememberMe }
 					/>
