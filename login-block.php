@@ -40,7 +40,9 @@ function init() {
 add_action( 'init', __NAMESPACE__ . '\init' );
 
 function render( $attributes, $rendered_html, $block ) {
-	ob_start();
+	if ( is_user_logged_in() ) {
+		return '';
+	}
 
 	$attribute_to_form_arg = [
 		'labelUsername'     => 'label_username',
@@ -52,36 +54,26 @@ function render( $attributes, $rendered_html, $block ) {
 		'labelLogIn'        => 'label_log_in',
 	];
 
-	var_dump( $attributes );
-
 	$output = '<div class="twst-login login-block">';
-	if ( ! is_user_logged_in() ) {
 
-		$args = [
-			'form_id' => SLUG,
-			'echo' => false,
-		];
+	$args = [
+		'form_id' => SLUG,
+		'echo' => false,
+	];
 
-		if ( ! empty( $block->context['postId'] ) ) {
-			$args['redirect'] = get_permalink( $block->context['postId'] );
-		}
-
-		foreach ( $attribute_to_form_arg as $attribute => $arg ) {
-			if ( isset( $attributes[ $attribute ] ) && '' !== $attributes[ $attribute ] ) {
-				$args[ $arg ] = $attributes[ $attribute ];
-			}
-		}
-	
-		var_dump( $args );
-
-		$output .= wp_login_form( $args );
-	} else {
-		$output .= sprintf(
-			__( 'You are logged in as %s.', 'twst-login-block' ),
-			wp_get_current_user()->display_name
-		);
+	if ( ! empty( $block->context['postId'] ) ) {
+		$args['redirect'] = get_permalink( $block->context['postId'] );
 	}
+
+	foreach ( $attribute_to_form_arg as $attribute => $arg ) {
+		if ( isset( $attributes[ $attribute ] ) && '' !== $attributes[ $attribute ] ) {
+			$args[ $arg ] = $attributes[ $attribute ];
+		}
+	}
+
+	$output .= wp_login_form( $args );
+
 	$output .= '</div>';
 
-	return $output . ob_get_clean();
+	return $output;
 }
