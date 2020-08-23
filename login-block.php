@@ -30,7 +30,7 @@ function init() {
 		filemtime( DIR . 'build/index.css' )
 	);
 
-	register_block_type( 'twst/login', array(
+	register_block_type( BLOCK, array(
 		'editor_script'   => SLUG . '-editor',
 		'editor_style'    => SLUG . '-editor',
 		'uses_context'    => [ 'postId' ],
