@@ -1,14 +1,14 @@
 ### TWST Login Block
 * Contributors:      twst
-* Tags:              block, login
+* Tags:              block, login, log in, form
 * Requires at least: 5.5
 * Tested up to:      5.5
-* Stable tag:        1.0
+* Stable tag:        1.0.0
 * Requires PHP:      5.6
 * License:           GPL-3.0-or-later
 * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
-Easily insert a login block into your post.
+Easily insert a log in block into your post.
 
 ## Description
 
@@ -34,5 +34,5 @@ File an issue on the GitHub repository above with some details and we'll get in 
 
 ## Changelog
 
-# 1.0
+# 1.0.0
 * Initial Release
