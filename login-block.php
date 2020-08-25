@@ -22,6 +22,7 @@ function init() {
 		$script_asset['dependencies'],
 		$script_asset['version']
 	);
+	wp_set_script_translations( SLUG . '-editor', 'twst-login-block' );
 
 	wp_register_style(
 		SLUG . '-editor',
