@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     TWST Login Block
  * Description:     Easily insert a login form block into your post or page!
- * Version:         1.0.0
+ * Version:         1.0.1
  * Author:          TWST
  * License:         GPL-3.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html

@@ -3,7 +3,7 @@
 * Tags:              block, login, log in, form
 * Requires at least: 5.5
 * Tested up to:      5.5
-* Stable tag:        1.0.0
+* Stable tag:        1.0.1
 * Requires PHP:      5.6
 * License:           GPL-3.0-or-later
 * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
@@ -33,6 +33,9 @@ Please make sure it's not a WordPress bug first, check the WordPress login page!
 File an issue on the GitHub repository above with some details and we'll get in touch.
 
 ## Changelog
+
+# 1.0.1
+* Load translations
 
 # 1.0.0
 * Initial Release
