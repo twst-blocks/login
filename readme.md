@@ -1,4 +1,4 @@
-### TWST Login Block
+### Login Block
 * Contributors:      twst
 * Tags:              block, login, log in, form
 * Requires at least: 5.5

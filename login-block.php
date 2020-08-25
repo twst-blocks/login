@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     TWST Login Block
+ * Plugin Name:     Login Block
  * Description:     Easily insert a login form block into your post or page!
  * Version:         1.0.1
  * Author:          TWST
